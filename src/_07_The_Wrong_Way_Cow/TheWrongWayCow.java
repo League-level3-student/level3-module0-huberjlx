@@ -48,12 +48,80 @@
 
 package _07_The_Wrong_Way_Cow;
 
+import java.util.ArrayList;
+
 public class TheWrongWayCow {
 
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the [col, row] coordinate position of the
         // head (letter 'c') of the wrong way cow!
+        int direction = 0; // 0 left-right, 1 = right-left, 2 = up-down, 3 = down-up
+        int upFrequency = 0;
+        int downFrequency = 0;
+        int leftFrequency = 0;
+        int rightFrequency = 0;
         
+        ArrayList<Integer> cowCoords = new ArrayList<>();
+
+    	for (int i = 0; i < field.length; i++) {
+    		String cowString = "";
+    		for (int j = 0; j < field[i].length; j++) {
+    			cowString += field[i][j];
+           		if (cowString.contains("cow")) {
+        			leftFrequency += 1;
+        			cowCoords.add(direction);
+        			cowCoords.add(i);
+        			cowCoords.add(j - 2);
+        		}
+    		}
+    	}
+    	direction += 1;
+    	for (int i = 0; i < field.length; i++) {
+    		String cowString = "";
+    		for (int j = 0; j < field[i].length; j++) {
+    			cowString += field[i][j];
+           		if (cowString.contains("cow")) {
+        			rightFrequency += 1;
+        			cowCoords.add(direction);
+        			cowCoords.add(i);
+        			cowCoords.add(j - 2);
+        		}
+    		}
+    	}
+    	direction += 1;
+    	for (int i = 0; i < field.length; i++) {
+    		String cowString = "";
+    		for (int j = 0; j < field[i].length; j++) {
+    			cowString += field[i][j];
+           		if (cowString.contains("cow")) {
+        			upFrequency += 1;
+        			cowCoords.add(direction);
+        			cowCoords.add(i);
+        			cowCoords.add(j - 2);
+        		}
+    		}
+    	}
+    	direction += 1;
+    	for (int i = 0; i < field.length; i++) {
+    		String cowString = "";
+    		for (int j = 0; j < field[i].length; j++) {
+    			cowString += field[i][j];
+           		if (cowString.contains("cow")) {
+        			downFrequency += 1;
+        			cowCoords.add(direction);
+        			cowCoords.add(i);
+        			cowCoords.add(j - 2);
+        		}
+    		}
+    	}
+    	if (upFrequency == 1) {
+    		for (int i = 0; i < cowCoords.size(); i++) {
+    			if (i % 3 == 0) {
+    				// if (cowCoords ) // Get index of thing or get thing at index, check if it is the right direction, if it is then get the next 2 items, then return those, otherwise repeat this with the next direction
+    			}
+    		}
+    	}
+    	
         return null;
     }
 }
